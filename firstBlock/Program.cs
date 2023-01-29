@@ -1,9 +1,13 @@
-﻿string[] arr = fillArray(4);
-Console.WriteLine(string.Join(", ", arr));
+﻿const int SIZE = 6;
 
-string[] fillArray(int size)
+string[] arr = fillArray();
+Console.WriteLine(string.Join(", ", arr));
+string[] resultArray = arrayCheck(arr);
+Console.WriteLine(string.Join(", ", resultArray));
+
+string[] fillArray()
 {   
-    string[] array = new string[size];
+    string[] array = new string[SIZE];
 
     for (int i = 0; i < array.Length; i++)
     {
@@ -12,4 +16,24 @@ string[] fillArray(int size)
     }
 
     return array;
+}
+
+
+string[] arrayCheck(string[] array)
+{
+    int j = 0;
+    string[] resultArray = new string[SIZE];
+    
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3)
+        {
+            resultArray[j] = array[i];
+            j++;
+        }
+    }
+
+    Array.Resize(ref resultArray, j);
+
+    return resultArray;
 }
